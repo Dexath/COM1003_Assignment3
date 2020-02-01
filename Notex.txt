@@ -1,0 +1,9 @@
+Sensors:
+-Gyro (2)
+-Touch (3)
+-Color (1)
+
+Motors:
+- 2 Large ones (right - B ; left - A)
+- 1 Medium motor (C)
+
