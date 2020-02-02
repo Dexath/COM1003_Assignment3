@@ -18,6 +18,7 @@ public class Assignment3 {
         this.trap = null;
         this.colorSensor = null;
         this.touchSensor = null;
+        this.ballDropped = false;
 
     }
 
@@ -30,15 +31,32 @@ public class Assignment3 {
         this.trap = myRobot.getMediumMotor(trap);
         this.colorSensor = myRobot.getCoulorSensor(color);
         this.touchSensor = myRobot.getTouchSensor(touch);
+        this.ballDropped = false;
     }
 
     private void init() {
         this.myRobot = new Robot();
     }
 
+    private void mainForward() {
+
+    }
+
+    private void rightDetected() {
+
+    }
+
+    private void wallDetected() {
+
+    }
+
+    private void redDetected() {
+
+    }
+
     public static void main(String[] args) {
 
-        Assignment3 main = new Assignment3();
+        Assignment3 main = new Assignment3("dia-lego-e4");
         main.init();
 
     }
