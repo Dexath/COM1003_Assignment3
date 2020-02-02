@@ -1,7 +1,7 @@
 import ShefRobot.*;
 
 public class Assignment3 {
-
+	
     private Robot myRobot;
 
     private void init(){
@@ -11,7 +11,7 @@ public class Assignment3 {
         
         Assignment3 main = new Assignment3();
         main.init();
+
     
     }
-
 }
