@@ -9,6 +9,7 @@ public class Assignment3 {
     private ColorSensor colorSensor;
     private TouchSensor touchSensor;
     private boolean ballDropped;
+    private final double SPEED; // percentage of maximum speed range 0.0 - 1.0
 
     public Assignment3() {
 
@@ -19,6 +20,7 @@ public class Assignment3 {
         this.colorSensor = null;
         this.touchSensor = null;
         this.ballDropped = false;
+        this.SPEED = 0;
 
     }
 
@@ -32,17 +34,14 @@ public class Assignment3 {
         this.colorSensor = myRobot.getCoulorSensor(color);
         this.touchSensor = myRobot.getTouchSensor(touch);
         this.ballDropped = false;
+        this.SPEED = 0.4;
     }
 
     private void init() {
         this.myRobot = new Robot();
     }
 
-    private void mainForward() {
-
-    }
-
-    private void rightDetected() {
+    private boolean isWall(){
 
     }
 
@@ -50,8 +49,40 @@ public class Assignment3 {
 
     }
 
+    private boolean isRight(){
+        
+    }
+
+    private void rightDetected() {
+
+    }
+
+    private boolean isRed(){
+        
+    }
+
     private void redDetected() {
 
+    }
+
+    private void mainForward() {
+
+        right.setSpeed(right.getMaxSpeed * SPEED);
+        left.setSpeed(right.getMaxSpeed * SPEED);
+        right.forward();
+        left.forward();
+
+        while (true) {
+            if (isWall()) {
+                wallDetected();
+                if (ballDropped)
+                    break;
+            }
+            if (isRight())
+                rightDetected();
+            if (isRed())
+                redDetected();
+        }
     }
 
     public static void main(String[] args) {
