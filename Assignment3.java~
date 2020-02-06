@@ -9,8 +9,7 @@ public class Assignment3 {
     private ColorSensor colorSensor;
     private TouchSensor touchSensor;
     private boolean ballDropped;
-    private final double SPEED; // percentage of maximum speed for normal functions range 0.2 - 0.8
-    private final double CHECK_SPEED; // percentage of macimum speed for checkLine turns range 0.2 - 0.8
+    private final double SPEED; // percentage of maximum speed range 0.2 - 0.8
 
     /** Default constructor for the object Assignment3 */
     public Assignment3() {
@@ -23,7 +22,6 @@ public class Assignment3 {
         this.touchSensor = null;
         this.ballDropped = false;
         this.SPEED = 0.0;
-        this.CHECK_SPEED = 0.0;
 
     }
 
@@ -48,19 +46,16 @@ public class Assignment3 {
         this.touchSensor = myRobot.getTouchSensor(touch);
         this.ballDropped = false;
         this.SPEED = 0.4;
-        this.CHECK_SPEED = 0.2;
+
     }
 
     /** Function initializing parts of the robot and the the rest of the program */
     private void init() {
-    	/*
+        
+        while(true) System.out.println(whatColor());
+        /*
         mainForward();
-        doDance();
-        */
-        while(true){
-        	whatColor();
-        }
-
+        doDance();*/
     }
 
     /**
@@ -69,11 +64,9 @@ public class Assignment3 {
      * @return return 0 for black, 1 for white and 2 for red
      */
     private int whatColor() {
-        // TODO write interpreting color
-        System.out.print(colorSensor.getRed());
-        colorSensor.setMode(ColorSensor.Mode.AMBIENT);
-        System.out.println("  "+ colorSensor.getAmbient());
-        colorSensor.setMode(ColorSensor.Mode.RED);
+        double value = color.getRed();
+        if(value<0.2) return 0;
+        if(value>0.5) return 2;
         return 1;
     }
     /**Function that rotates robot around axis pependicular to the surface and going through the left weel
@@ -123,6 +116,16 @@ public class Assignment3 {
     }
 
     private void rightDetected() {
+<<<<<<< HEAD
+    	 
+  	  	right.setSpeed(0);
+=======
+        right.setSpeed(0);
+>>>>>>> ae8ca7dd654256611be30dbea5827be3a18c0d02
+    	left.setSpeed((int) (left.getMaxSpeed() * SPEED));
+        left.forward();
+        myRobot.sleep(3000);
+        left.stop();
 
     }
 
@@ -131,11 +134,19 @@ public class Assignment3 {
     }
 
     private void redDetected() {
-
+  
     }
 
     private void doDance() {
-
+    	
+    	right.backward();
+    	left.backward();
+    	myRobot.sleep(3000);
+    	left.stop();
+    	right.setSpeed(right.getMaxSpeed());
+    	
+    	Speaker song = myRobot.getSpeaker();
+    	song.playTone();
     }
 
     /**
@@ -168,8 +179,7 @@ public class Assignment3 {
 
     public static void main(String[] args) {
 
-        Assignment3 main = new Assignment3("dia-lego-A7", Motor.Port.B, Motor.Port.A, Motor.Port.C, Sensor.Port.S2, Sensor.Port.S1);
-        System.out.println("Succes");
+        Assignment3 main = new Assignment3("dia-lego-D1", Motor.Port.B, Motor.Port.A, Motor.Port.C, Sensor.Port.S2, Sensor.Port.S1);
         main.init();
 
     }
