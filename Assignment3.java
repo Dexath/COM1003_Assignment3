@@ -9,7 +9,7 @@ public class Assignment3 {
     private ColorSensor colorSensor;
     private TouchSensor touchSensor;
     private boolean ballDropped;
-    private final double SPEED; // percentage of maximum speed range 0.2 - 0.8
+    private final int SPEED; // percentage of maximum speed range 0.2 - 0.8
 
     /** Default constructor for the object Assignment3 */
     public Assignment3() {
@@ -21,7 +21,7 @@ public class Assignment3 {
         this.colorSensor = null;
         this.touchSensor = null;
         this.ballDropped = false;
-        this.SPEED = 0.0;
+        this.SPEED = 0;
 
     }
 
@@ -45,39 +45,19 @@ public class Assignment3 {
         this.colorSensor = myRobot.getColorSensor(color);
         this.touchSensor = myRobot.getTouchSensor(touch);
         this.ballDropped = false;
-        this.SPEED = 0.4;
+        this.SPEED = 50;
 
     }
 
     /** Function initializing parts of the robot and the the rest of the program */
     private void init() {
-        
-
+       
         mainForward();
-        //doDance();
+        doDance();
+
 
     }
 
-    
-    /**Function that rotates robot around axis pependicular to the surface and going through the left weel
-     * until the colorSensor registers black after which it returns the robot to position parallel to the line
-     *
-     * Use when using line check
-     */
-
-    private void checkLine() {
-        right.resetTachoCount();
-        right.setSpeed((int) (right.getMaxSpeed() * SPEED));
-        left.setSpeed(0);
-        while (colorSensor.getColor() != ColorSensor.Color.BLACK){}
-        right.setSpeed(0);
-        left.setSpeed((int) (left.getMaxSpeed() * SPEED));
-        left.rotate(right.getTachoCount());
-
-        right.setSpeed((int) (right.getMaxSpeed() * SPEED));
-        left.setSpeed((int) (left.getMaxSpeed() * SPEED));
-
-    }
 
     private boolean isWall() {
         return touchSensor.isTouched();
@@ -86,60 +66,32 @@ public class Assignment3 {
     private void wallDetected() {
     	
     	if (ballDropped == false){
-    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.setSpeed(SPEED));
+    	right.setSpeed(SPEED);
     	left.backward();
     	right.backward();
     	myRobot.sleep(1000);
     	left.stop();
     	right.stop();
     	// Rotation
-    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.setSpeed(SPEED);
+    	right.setSpeed(SPEED);
     	left.forward();
     	right.backward();
     	myRobot.sleep(1085);
     	left.stop();
     	right.stop();
     	// Moving back to the opposite direction
-    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.setSpeed(SPEED);
+    	right.setSpeed(SPEED);
     	left.forward();
     	right.forward();
-    	myRobot.sleep(0100);
+    	myRobot.sleep(1100);
     	left.stop();
     	right.stop();
     	
     	}
     	
-    	}
-
-    private boolean isRight() {
-        /*
-        boolean foundJunction = false;
-        if (colorSensor.getColor() == ColorSensor.Color.BLACK) {
-            
-             * left.setSpeed((int)(left.getMaxSpeed()*(SPEED+0.1))); myRobot.sleep(300);
-             * if(colorSensor.getColor() == ColorSensor.Color.BLACK) foundJunction=true; right.backwards(); left.backwards();
-             * myRobot.sleep(300); left.setSpeed((int)(left).getMaxSpeed()*SPEED));
-             * right.forward(); left.forward();
-             
-        }
-        
-        return foundJunction;
-        */
-
-        return (colorSensor.getColor() == ColorSensor.Color.BLACK);
-    }
-
-    private void rightDetected() {
-
-        right.setSpeed(0);
-    	left.setSpeed((int) (left.getMaxSpeed() * SPEED));
-        left.forward();
-        myRobot.sleep(1210);
-        left.stop();
-
     }
 
     private boolean isRed() {
@@ -147,6 +99,7 @@ public class Assignment3 {
     }
 
     private void redDetected() {
+
     	// Ensuring that the position of ball drop is well within the red circle
     	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
     	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
@@ -177,6 +130,7 @@ public class Assignment3 {
     	left.forward();
     	right.forward();
     	myRobot.sleep(1500);
+
     	
     }
 
