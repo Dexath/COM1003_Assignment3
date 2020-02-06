@@ -52,8 +52,17 @@ public class Assignment3 {
     /** Function initializing parts of the robot and the the rest of the program */
     private void init() {
         
-        //mainForward();
-        doDance();
+
+        mainForward();
+        //doDance();
+
+<<<<<<< HEAD
+        */
+       //redDetected();
+       wallDetected();
+=======
+>>>>>>> c087ab0bc79b41c1afbc8c30045b07da4f0694f4
+
     }
 
     
@@ -82,8 +91,35 @@ public class Assignment3 {
     }
 
     private void wallDetected() {
-
-    }
+    	
+    	if (ballDropped == false){
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.backward();
+    	right.backward();
+    	myRobot.sleep(1000);
+    	left.stop();
+    	right.stop();
+    	// Rotation
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.forward();
+    	right.backward();
+    	myRobot.sleep(1085);
+    	left.stop();
+    	right.stop();
+    	// Moving back to the opposite direction
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.forward();
+    	right.forward();
+    	myRobot.sleep(0100);
+    	left.stop();
+    	right.stop();
+    	
+    	}
+    	
+    	}
 
     private boolean isRight() {
         /*
@@ -108,7 +144,7 @@ public class Assignment3 {
         right.setSpeed(0);
     	left.setSpeed((int) (left.getMaxSpeed() * SPEED));
         left.forward();
-        myRobot.sleep(3000);
+        myRobot.sleep(1210);
         left.stop();
 
     }
@@ -123,13 +159,16 @@ public class Assignment3 {
 
     private void doDance() {
     	
-    	/*right.backward();
+    	right.backward();
     	left.backward();
-    	myRobot.sleep(3000);
+    	myRobot.sleep(2000);
     	left.stop();
-    	right.setSpeed(right.getMaxSpeed());*/
+    	right.setSpeed(right.getMaxSpeed());
     	
     	Speaker song = myRobot.getSpeaker();
+    	
+    	song.setVolume(50);
+    	
     	song.playTone(1108, 250);
     	song.playTone(1108, 250);
     	song.playTone(1108, 250);
@@ -194,28 +233,29 @@ public class Assignment3 {
      * Main forward function with detection of different events
      */
     private void mainForward() {
-
-        right.setSpeed((int) (right.getMaxSpeed() * SPEED));
-        left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-        right.forward();
-        left.forward();
-
-        // int counter = 0;
-        while (true) {
-            if (isWall()) {
-                wallDetected();
-                if (ballDropped)
-                    break;
-            }
-            if (isRight())
-                rightDetected();
-            if (isRed())
-                redDetected();
-
-            /*
-             * myRobot.sleep(250); if(counter==4){ checkLine(); counter=0; } counter++;
-             */
+        while(true){
+        	if(colorSensor.getColor()==ColorSensor.Color.RED){
+        		redDetected();
+        	}
+        	if(colorSensor.getColor()==ColorSensor.Color.BLACK){
+        		left.setSpeed(50);
+        		right.setSpeed(0);
+        		right.forward();
+        		left.forward();
+        	}
+        	if(colorSensor.getColor()==ColorSensor.Color.WHITE){
+        		right.setSpeed(50);
+        		left.setSpeed(0);
+        		right.forward();
+        		left.forward();
+        	}
+        	if(isWall()){
+        		if(!ballDropped) wallDetected();
+        		else break;
+        	}
         }
+
+        
     }
 
     public static void main(String[] args) {
