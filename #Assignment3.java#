@@ -56,13 +56,6 @@ public class Assignment3 {
         mainForward();
         //doDance();
 
-<<<<<<< HEAD
-        */
-       //redDetected();
-       wallDetected();
-=======
->>>>>>> c087ab0bc79b41c1afbc8c30045b07da4f0694f4
-
     }
 
     
