@@ -57,9 +57,7 @@ public class Assignment3 {
         mainForward();
         doDance();
         */
-        while(true){
-        	whatColor();
-        }
+       
 
     }
 
@@ -121,6 +119,11 @@ public class Assignment3 {
     }
 
     private void rightDetected() {
+    	   	  	
+    	left.setSpeed(100);
+        left.forward();
+        myRobot.sleep(3000);
+        left.stop();
 
     }
 
@@ -129,7 +132,7 @@ public class Assignment3 {
     }
 
     private void redDetected() {
-
+  
     }
 
     private void doDance() {
