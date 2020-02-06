@@ -52,6 +52,7 @@ public class Assignment3 {
     /** Function initializing parts of the robot and the the rest of the program */
     private void init() {
 <<<<<<< HEAD
+<<<<<<< HEAD
         
         //mainForward();
         doDance();
@@ -79,6 +80,14 @@ public class Assignment3 {
        
         mainForward();
         doDance();
+=======
+       
+        mainForward();
+<<<<<<< HEAD
+        //doDance();
+=======
+        doDance();
+>>>>>>> ec72229b0a3884446be92c95c0c1e57445c498ae
 >>>>>>> 8138319333ac74ad080bf96637ca447868ff98f2
 
     }
@@ -124,6 +133,42 @@ public class Assignment3 {
     }
 
     private void redDetected() {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    	// Ensuring that the position of ball drop is well within the red circle
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.forward();
+    	right.forward();
+    	myRobot.sleep(1500);
+    	// Rotation
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.forward();
+    	right.backward();
+    	myRobot.sleep(1085);
+    	left.stop();
+    	right.stop();
+    	//Dropping of the ball
+    	trap.setSpeed(100);
+    	trap.forward();
+    	myRobot.sleep(1000);
+    	trap.stop();
+    	trap.setSpeed(100);
+    	trap.backward();
+    	myRobot.sleep(1000);
+    	trap.stop();
+    	ballDropped = true;
+    	// Moving back towards the line
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.forward();
+    	right.forward();
+    	myRobot.sleep(1500);
+=======
+>>>>>>> 8138319333ac74ad080bf96637ca447868ff98f2
+>>>>>>> ec72229b0a3884446be92c95c0c1e57445c498ae
     	
     }
 
