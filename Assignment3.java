@@ -53,7 +53,7 @@ public class Assignment3 {
     private void init() {
         
         //mainForward();
-        doDance();
+        rightDetected();
     }
 
     
@@ -108,7 +108,7 @@ public class Assignment3 {
         right.setSpeed(0);
     	left.setSpeed((int) (left.getMaxSpeed() * SPEED));
         left.forward();
-        myRobot.sleep(3000);
+        myRobot.sleep(1210);
         left.stop();
 
     }
@@ -123,13 +123,16 @@ public class Assignment3 {
 
     private void doDance() {
     	
-    	/*right.backward();
+    	right.backward();
     	left.backward();
-    	myRobot.sleep(3000);
+    	myRobot.sleep(2000);
     	left.stop();
-    	right.setSpeed(right.getMaxSpeed());*/
+    	right.setSpeed(right.getMaxSpeed());
     	
     	Speaker song = myRobot.getSpeaker();
+    	
+    	song.setVolume(50);
+    	
     	song.playTone(1108, 250);
     	song.playTone(1108, 250);
     	song.playTone(1108, 250);
