@@ -57,7 +57,7 @@ public class Assignment3 {
         mainForward();
         doDance();
         */
-       
+       redDetected();
 
     }
 
@@ -132,7 +132,36 @@ public class Assignment3 {
     }
 
     private void redDetected() {
-  
+    	// Ensuring that the position of ball drop is well within the red circle
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.forward();
+    	right.forward();
+    	myRobot.sleep(1500);
+    	// Rotation
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.forward();
+    	right.backward();
+    	myRobot.sleep(1085);
+    	left.stop();
+    	right.stop();
+    	//Dropping of the ball
+    	trap.setSpeed(100);
+    	trap.forward();
+    	myRobot.sleep(1000);
+    	trap.stop();
+    	trap.setSpeed(100);
+    	trap.backward();
+    	myRobot.sleep(1000);
+    	trap.stop();
+    	// Moving back towards the line
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.forward();
+    	right.forward();
+    	myRobot.sleep(1500);
+    	
     }
 
     private void doDance() {
@@ -170,7 +199,7 @@ public class Assignment3 {
     public static void main(String[] args) {
 
         Assignment3 main = new Assignment3("dia-lego-D1", Motor.Port.B, Motor.Port.A, Motor.Port.C, Sensor.Port.S2, Sensor.Port.S1);
-        System.out.println("Succes");
+        System.out.println("Success");
         main.init();
 
     }
