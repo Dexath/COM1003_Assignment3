@@ -50,16 +50,17 @@ public class Assignment3 {
     }
 
     /** Function initializing parts of the robot and the the rest of the program */
+
     private void init() {
        
         mainForward();
-
-
+        doDance();
 
     }
 
     private void wallDetected() {
     	
+
     	left.setSpeed(SPEED);
     	right.setSpeed(SPEED);
     	left.backward();
@@ -95,18 +96,21 @@ public class Assignment3 {
 
     private void redDetected() {
 
-    	// Ensuring that the position of ball drop is well within the red circle
-    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	left.forward();
-    	right.forward();
-    	myRobot.sleep(1500);
+    	
     	// Rotation
-    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.setSpeed(SPEED);
+    	right.setSpeed(SPEED);
     	left.forward();
     	right.backward();
-    	myRobot.sleep(1085);
+    	myRobot.sleep(500);
+    	while(colorSensor.getColor()==ColorSensor.Color.WHITE){}
+    	while(colorSensor.getColor()==ColorSensor.Color.BLACK){}
+    	left.stop();
+    	right.stop();
+    	//Moving a little bit back 
+    	left.backward();
+    	right.backward();
+    	myRobot.sleep(500);
     	left.stop();
     	right.stop();
     	//Dropping of the ball
@@ -120,11 +124,12 @@ public class Assignment3 {
     	trap.stop();
     	ballDropped = true;
     	// Moving back towards the line
-    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.setSpeed(SPEED);
+    	right.setSpeed(SPEED);
     	left.forward();
     	right.forward();
-    	myRobot.sleep(1500);
+    	myRobot.sleep(500);
+    	
 
     	
     }
@@ -139,7 +144,7 @@ public class Assignment3 {
     	
     	Speaker song = myRobot.getSpeaker();
     	
-    	song.setVolume(50);
+    	song.setVolume(80);
     	
     	song.playTone(1108, 250);
     	song.playTone(1108, 250);
@@ -170,7 +175,7 @@ public class Assignment3 {
     	song.playTone(987, 250);
     	song.playTone(830, 250);
     	song.playTone(830, 250);
-    	song.playTone(830, 250);
+    	song.playTone(830, 250); 
     	song.playTone(830, 250);
     	song.playTone(830, 250);
     	song.playTone(830, 250);
@@ -198,7 +203,101 @@ public class Assignment3 {
     	song.playTone(740, 250);
     	song.playTone(880, 250);
     	song.playTone(830, 700);
-    	
+    	song.playTone(1108, 750);
+    	song.playTone(987, 450);
+    	song.playTone(880, 250);
+    	song.playTone(987, 250);
+    	song.playTone(880, 250);
+    	song.playTone(987, 250); 
+    	song.playTone(880, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 750);
+    	song.playTone(740, 250);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 750);
+    	song.playTone(880, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(740, 250);
+    	song.playTone(740, 250);
+    	song.playTone(880, 750);
+    	song.playTone(987, 450);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(740, 150);
+    	song.playTone(740, 150);
+    	song.playTone(880, 750);
+    	song.playTone(830, 750);
+    	song.playTone(740, 250);  	
+    	song.playTone(740, 450);
+    	song.playTone(740, 250);
+    	song.playTone(880, 250);
+    	song.playTone(830, 250);
+    	song.playTone(880, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 150);
+    	song.playTone(830, 150);
+    	song.playTone(880, 250);
+    	song.playTone(830, 150);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(740, 750);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 550);
+    	song.playTone(830, 150);
+    	song.playTone(740, 150);
+    	song.playTone(830, 150);
+    	song.playTone(740, 150);
+    	song.playTone(830, 150);
+    	song.playTone(740, 150);
+    	song.playTone(830, 450);
+    	song.playTone(740, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 250);
+    	song.playTone(740, 150);
+    	song.playTone(880, 750);
+    	song.playTone(740, 450);
+    	song.playTone(740, 450);
+    	song.playTone(880, 250);
+    	song.playTone(830, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(830, 150);
+    	song.playTone(880, 250);
+    	song.playTone(830, 150);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(740, 750);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 550);
+    	song.playTone(740, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(880, 450);
+    	song.playTone(830, 250);
+     	song.playTone(740, 250);
+     	song.playTone(880, 750);
+     	song.playTone(880, 450);
+     	song.playTone(830, 450);
+     	song.playTone(740, 450);
     }
 
     /**
@@ -206,9 +305,9 @@ public class Assignment3 {
      */
     private void mainForward() {
         while(true){
-        	/*if(colorSensor.getColor()==ColorSensor.Color.RED){
+        	if(colorSensor.getColor()==ColorSensor.Color.RED){
         		redDetected();
-        	}*/
+        	}
         	if(colorSensor.getColor()==ColorSensor.Color.BLACK){
         		left.setSpeed(SPEED);
         		right.setSpeed(SPEED/4);
