@@ -53,7 +53,7 @@ public class Assignment3 {
     private void init() {
         
         //mainForward();
-        rightDetected();
+        doDance();
     }
 
     
@@ -162,7 +162,7 @@ public class Assignment3 {
     	song.playTone(987, 250);
     	song.playTone(830, 250);
     	song.playTone(830, 250);
-    	song.playTone(830, 250);
+    	song.playTone(830, 250); 
     	song.playTone(830, 250);
     	song.playTone(830, 250);
     	song.playTone(830, 250);
@@ -190,6 +190,41 @@ public class Assignment3 {
     	song.playTone(740, 250);
     	song.playTone(880, 250);
     	song.playTone(830, 700);
+    	song.playTone(1108, 750);
+    	song.playTone(987, 450);
+    	song.playTone(880, 250);
+    	song.playTone(987, 250);
+    	song.playTone(880, 250);
+    	song.playTone(987, 250);
+    	song.playTone(880, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 750);
+    	song.playTone(740, 250);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 250);
+    	song.playTone(880, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(740, 250);
+    	song.playTone(740, 250);
+    	song.playTone(880, 750);
+    	song.playTone(987, 450);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(740, 150);
+    	song.playTone(740, 150);
+    	song.playTone(880, 750);
+    	
+    	
     	
     }
 
