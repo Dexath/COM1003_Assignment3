@@ -205,7 +205,7 @@ public class Assignment3 {
     	song.playTone(880, 250);
     	song.playTone(987, 250);
     	song.playTone(880, 250);
-    	song.playTone(987, 250);
+    	song.playTone(987, 250); 
     	song.playTone(880, 250);
     	song.playTone(830, 250);
     	song.playTone(830, 250);
@@ -215,7 +215,7 @@ public class Assignment3 {
     	song.playTone(740, 250);
     	song.playTone(880, 150);
     	song.playTone(880, 150);
-    	song.playTone(830, 250);
+    	song.playTone(830, 750);
     	song.playTone(880, 250);
     	song.playTone(830, 250);
     	song.playTone(740, 250);
@@ -233,9 +233,68 @@ public class Assignment3 {
     	song.playTone(740, 150);
     	song.playTone(740, 150);
     	song.playTone(880, 750);
-    	
-    	
-    	
+    	song.playTone(830, 750);
+    	song.playTone(740, 250);  	
+    	song.playTone(740, 450);
+    	song.playTone(740, 250);
+    	song.playTone(880, 250);
+    	song.playTone(830, 250);
+    	song.playTone(880, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 150);
+    	song.playTone(830, 150);
+    	song.playTone(880, 250);
+    	song.playTone(830, 150);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(740, 750);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 550);
+    	song.playTone(830, 150);
+    	song.playTone(740, 150);
+    	song.playTone(830, 150);
+    	song.playTone(740, 150);
+    	song.playTone(830, 150);
+    	song.playTone(740, 150);
+    	song.playTone(830, 450);
+    	song.playTone(740, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 250);
+    	song.playTone(740, 150);
+    	song.playTone(880, 750);
+    	song.playTone(740, 450);
+    	song.playTone(740, 450);
+    	song.playTone(880, 250);
+    	song.playTone(830, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(830, 150);
+    	song.playTone(880, 250);
+    	song.playTone(830, 150);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(740, 750);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 550);
+    	song.playTone(740, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(880, 450);
+    	song.playTone(830, 250);
+     	song.playTone(740, 250);
+     	song.playTone(880, 750);
+     	song.playTone(880, 450);
+     	song.playTone(830, 450);
+     	song.playTone(740, 450);
     }
 
     /**
