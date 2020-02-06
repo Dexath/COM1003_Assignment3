@@ -45,7 +45,7 @@ public class Assignment3 {
         this.colorSensor = myRobot.getColorSensor(color);
         this.touchSensor = myRobot.getTouchSensor(touch);
         this.ballDropped = false;
-        this.SPEED = 50;
+        this.SPEED = 100;
 
     }
 
@@ -53,24 +53,18 @@ public class Assignment3 {
     private void init() {
        
         mainForward();
-        doDance();
 
 
-    }
 
-
-    private boolean isWall() {
-        return touchSensor.isTouched();
     }
 
     private void wallDetected() {
     	
-    	if (ballDropped == false){
-    	left.setSpeed(SPEED));
+    	left.setSpeed(SPEED);
     	right.setSpeed(SPEED);
     	left.backward();
     	right.backward();
-    	myRobot.sleep(1000);
+    	myRobot.sleep(500);
     	left.stop();
     	right.stop();
     	// Rotation
@@ -78,7 +72,9 @@ public class Assignment3 {
     	right.setSpeed(SPEED);
     	left.forward();
     	right.backward();
-    	myRobot.sleep(1085);
+    	myRobot.sleep(300);
+    	while(colorSensor.getColor()==ColorSensor.Color.WHITE){}
+    	while(colorSensor.getColor()==ColorSensor.Color.BLACK){}
     	left.stop();
     	right.stop();
     	// Moving back to the opposite direction
@@ -86,11 +82,10 @@ public class Assignment3 {
     	right.setSpeed(SPEED);
     	left.forward();
     	right.forward();
-    	myRobot.sleep(1100);
+    	myRobot.sleep(100);
     	left.stop();
     	right.stop();
-    	
-    	}
+
     	
     }
 
@@ -211,22 +206,22 @@ public class Assignment3 {
      */
     private void mainForward() {
         while(true){
-        	if(colorSensor.getColor()==ColorSensor.Color.RED){
+        	/*if(colorSensor.getColor()==ColorSensor.Color.RED){
         		redDetected();
-        	}
+        	}*/
         	if(colorSensor.getColor()==ColorSensor.Color.BLACK){
-        		left.setSpeed(50);
-        		right.setSpeed(0);
-        		right.forward();
+        		left.setSpeed(SPEED);
+        		right.setSpeed(SPEED/4);
+        		right.backward();
         		left.forward();
         	}
         	if(colorSensor.getColor()==ColorSensor.Color.WHITE){
-        		right.setSpeed(50);
-        		left.setSpeed(0);
+        		right.setSpeed(SPEED);
+        		left.setSpeed(SPEED/4);
         		right.forward();
-        		left.forward();
+        		left.backward();
         	}
-        	if(isWall()){
+        	if(touchSensor.isTouched()){
         		if(!ballDropped) wallDetected();
         		else break;
         	}
