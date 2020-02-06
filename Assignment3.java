@@ -51,12 +51,11 @@ public class Assignment3 {
 
     /** Function initializing parts of the robot and the the rest of the program */
     private void init() {
-    	/*
+        
+        while(true) System.out.println(whatColor());
+        /*
         mainForward();
-        doDance();
-        */
-       
-
+        doDance();*/
     }
 
     /**
@@ -65,9 +64,9 @@ public class Assignment3 {
      * @return return 0 for black, 1 for white and 2 for red
      */
     private int whatColor() {
-        // TODO write interpreting color
-        System.out.print(colorSensor.getRed());
-        
+        double value = color.getRed();
+        if(value<0.2) return 0;
+        if(value>0.5) return 2;
         return 1;
     }
     /**Function that rotates robot around axis pependicular to the surface and going through the left weel
@@ -117,9 +116,7 @@ public class Assignment3 {
     }
 
     private void rightDetected() {
-    	   	  	
-
-
+        right.setSpeed(0);
     	left.setSpeed((int) (left.getMaxSpeed() * SPEED));
         left.forward();
         myRobot.sleep(3000);
