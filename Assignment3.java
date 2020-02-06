@@ -119,7 +119,8 @@ public class Assignment3 {
     }
 
     private void rightDetected() {
-    	   	  	
+    	 
+  	  	right.setSpeed(0);
     	left.setSpeed((int) (left.getMaxSpeed() * SPEED));
         left.forward();
         myRobot.sleep(3000);
@@ -136,6 +137,12 @@ public class Assignment3 {
     }
 
     private void doDance() {
+    	
+    	right.backward();
+    	left.backward();
+    	myRobot.sleep(3000);
+    	left.stop();
+    	right.setSpeed(right.getMaxSpeed());
     	
     	Speaker song = myRobot.getSpeaker();
     	song.playTone();
