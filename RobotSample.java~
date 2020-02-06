@@ -12,7 +12,7 @@ public class RobotSample {
     public static void main(String[] args) {
 
         //Create a robot object to use and connect to it
-        Robot myRobot = new Robot("dia-lego-D6"); ////REPLACE x0 BY THE NAME OF YOUR ROBOT 
+        Robot myRobot = new Robot("dia-lego-D1"); ////REPLACE x0 BY THE NAME OF YOUR ROBOT 
        
         //The robot is made of components which are themselves objects.
         //Create references to them as useful shortcuts

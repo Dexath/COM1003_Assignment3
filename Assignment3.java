@@ -71,9 +71,7 @@ public class Assignment3 {
     private int whatColor() {
         // TODO write interpreting color
         System.out.print(colorSensor.getRed());
-        colorSensor.setMode(ColorSensor.Mode.AMBIENT);
-        System.out.println("  "+ colorSensor.getAmbient());
-        colorSensor.setMode(ColorSensor.Mode.RED);
+        
         return 1;
     }
     /**Function that rotates robot around axis pependicular to the surface and going through the left weel
@@ -168,7 +166,7 @@ public class Assignment3 {
 
     public static void main(String[] args) {
 
-        Assignment3 main = new Assignment3("dia-lego-A7", Motor.Port.B, Motor.Port.A, Motor.Port.C, Sensor.Port.S2, Sensor.Port.S1);
+        Assignment3 main = new Assignment3("dia-lego-D1", Motor.Port.B, Motor.Port.A, Motor.Port.C, Sensor.Port.S2, Sensor.Port.S1);
         System.out.println("Succes");
         main.init();
 
