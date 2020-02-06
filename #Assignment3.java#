@@ -130,25 +130,25 @@ public class Assignment3 {
     	right.setSpeed(right.getMaxSpeed());
     	
     	Speaker song = myRobot.getSpeaker();
-    	song.playTone(277, 200);
-    	song.playTone(277, 200);
-    	song.playTone(277, 200);
-    	song.playTone(277, 200);
-    	song.playTone(277, 200);
-    	song.playTone(277, 200);
-    	song.playTone(277, 200);
-    	song.playTone(220, 200);
-    	song.playTone(277, 200);
-    	song.playTone(220, 200);
-    	song.playTone(220, 200);
-    	song.playTone(220, 200);
-    	song.playTone(220, 200);
-    	song.playTone(220, 200);
-    	song.playTone(220, 200);
-    	song.playTone(220, 200);
-      	song.playTone(185, 200);
-    	song.playTone(220, 200);
-    	song.playTone(246, 200);
+    	song.playTone(277, 300);
+    	song.playTone(277, 300);
+    	song.playTone(277, 300);
+    	song.playTone(277, 300);
+    	song.playTone(277, 300);
+    	song.playTone(277, 300);
+    	song.playTone(277, 300);
+    	song.playTone(220, 300);
+    	song.playTone(277, 300);
+    	song.playTone(220, 300);
+    	song.playTone(220, 300);
+    	song.playTone(220, 300);
+    	song.playTone(220, 300);
+    	song.playTone(220, 300);
+    	song.playTone(220, 300);
+    	song.playTone(220, 300);
+      	song.playTone(185, 300);
+    	song.playTone(220, 300);
+    	song.playTone(246, 300);
 
     }
 
