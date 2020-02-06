@@ -141,7 +141,7 @@ public class Assignment3 {
     	
     	Speaker song = myRobot.getSpeaker();
     	
-    	song.setVolume(50);
+    	song.setVolume(80);
     	
     	song.playTone(1108, 250);
     	song.playTone(1108, 250);
