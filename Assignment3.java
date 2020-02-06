@@ -56,7 +56,8 @@ public class Assignment3 {
         doDance();
 
         */
-       redDetected();
+       //redDetected();
+       wallDetected();
 
     }
 
@@ -86,8 +87,35 @@ public class Assignment3 {
     }
 
     private void wallDetected() {
-
-    }
+    	
+    	if (ballDropped == false){
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.backward();
+    	right.backward();
+    	myRobot.sleep(1000);
+    	left.stop();
+    	right.stop();
+    	// Rotation
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.forward();
+    	right.backward();
+    	myRobot.sleep(1085);
+    	left.stop();
+    	right.stop();
+    	// Moving back to the opposite direction
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.forward();
+    	right.forward();
+    	myRobot.sleep(0100);
+    	left.stop();
+    	right.stop();
+    	
+    	}
+    	
+    	}
 
     private boolean isRight() {
         /*
