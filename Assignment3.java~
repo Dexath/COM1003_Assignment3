@@ -51,24 +51,16 @@ public class Assignment3 {
 
     /** Function initializing parts of the robot and the the rest of the program */
     private void init() {
-        
-        while(true) System.out.println(whatColor());
         /*
         mainForward();
-        doDance();*/
+        doDance();
+
+        */
+       redDetected();
+
     }
 
-    /**
-     * Interprets color under the sensor
-     * 
-     * @return return 0 for black, 1 for white and 2 for red
-     */
-    private int whatColor() {
-        double value = color.getRed();
-        if(value<0.2) return 0;
-        if(value>0.5) return 2;
-        return 1;
-    }
+    
     /**Function that rotates robot around axis pependicular to the surface and going through the left weel
      * until the colorSensor registers black after which it returns the robot to position parallel to the line
      *
@@ -79,7 +71,7 @@ public class Assignment3 {
         right.resetTachoCount();
         right.setSpeed((int) (right.getMaxSpeed() * SPEED));
         left.setSpeed(0);
-        while (whatColor() != 0){}
+        while (colorSensor.getColor() != ColorSensor.Color.BLACK){}
         right.setSpeed(0);
         left.setSpeed((int) (left.getMaxSpeed() * SPEED));
         left.rotate(right.getTachoCount());
@@ -100,10 +92,10 @@ public class Assignment3 {
     private boolean isRight() {
         /*
         boolean foundJunction = false;
-        if (whatColor() == 0) {
+        if (colorSensor.getColor() == ColorSensor.Color.BLACK) {
             
              * left.setSpeed((int)(left.getMaxSpeed()*(SPEED+0.1))); myRobot.sleep(300);
-             * if(whatColor() == 0) foundJunction=true; right.backwards(); left.backwards();
+             * if(colorSensor.getColor() == ColorSensor.Color.BLACK) foundJunction=true; right.backwards(); left.backwards();
              * myRobot.sleep(300); left.setSpeed((int)(left).getMaxSpeed()*SPEED));
              * right.forward(); left.forward();
              
@@ -112,16 +104,12 @@ public class Assignment3 {
         return foundJunction;
         */
 
-        return (whatColor()==0);
+        return (colorSensor.getColor() == ColorSensor.Color.BLACK);
     }
 
     private void rightDetected() {
-<<<<<<< HEAD
-    	 
-  	  	right.setSpeed(0);
-=======
+
         right.setSpeed(0);
->>>>>>> ae8ca7dd654256611be30dbea5827be3a18c0d02
     	left.setSpeed((int) (left.getMaxSpeed() * SPEED));
         left.forward();
         myRobot.sleep(3000);
@@ -130,11 +118,40 @@ public class Assignment3 {
     }
 
     private boolean isRed() {
-        return (whatColor()==2);
+        return (colorSensor.getColor() == ColorSensor.Color.RED);
     }
 
     private void redDetected() {
-  
+    	// Ensuring that the position of ball drop is well within the red circle
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.forward();
+    	right.forward();
+    	myRobot.sleep(1500);
+    	// Rotation
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.forward();
+    	right.backward();
+    	myRobot.sleep(1085);
+    	left.stop();
+    	right.stop();
+    	//Dropping of the ball
+    	trap.setSpeed(100);
+    	trap.forward();
+    	myRobot.sleep(1000);
+    	trap.stop();
+    	trap.setSpeed(100);
+    	trap.backward();
+    	myRobot.sleep(1000);
+    	trap.stop();
+    	// Moving back towards the line
+    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
+    	left.forward();
+    	right.forward();
+    	myRobot.sleep(1500);
+    	
     }
 
     private void doDance() {
@@ -146,7 +163,7 @@ public class Assignment3 {
     	right.setSpeed(right.getMaxSpeed());
     	
     	Speaker song = myRobot.getSpeaker();
-    	song.playTone();
+    	//song.playTone();
     }
 
     /**
@@ -180,6 +197,8 @@ public class Assignment3 {
     public static void main(String[] args) {
 
         Assignment3 main = new Assignment3("dia-lego-D1", Motor.Port.B, Motor.Port.A, Motor.Port.C, Sensor.Port.S2, Sensor.Port.S1);
+
+
         main.init();
 
     }
