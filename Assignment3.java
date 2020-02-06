@@ -9,8 +9,7 @@ public class Assignment3 {
     private ColorSensor colorSensor;
     private TouchSensor touchSensor;
     private boolean ballDropped;
-    private final double SPEED; // percentage of maximum speed for normal functions range 0.2 - 0.8
-    private final double CHECK_SPEED; // percentage of macimum speed for checkLine turns range 0.2 - 0.8
+    private final double SPEED; // percentage of maximum speed range 0.2 - 0.8
 
     /** Default constructor for the object Assignment3 */
     public Assignment3() {
@@ -23,7 +22,6 @@ public class Assignment3 {
         this.touchSensor = null;
         this.ballDropped = false;
         this.SPEED = 0.0;
-        this.CHECK_SPEED = 0.0;
 
     }
 
@@ -48,7 +46,7 @@ public class Assignment3 {
         this.touchSensor = myRobot.getTouchSensor(touch);
         this.ballDropped = false;
         this.SPEED = 0.4;
-        this.CHECK_SPEED = 0.2;
+
     }
 
     /** Function initializing parts of the robot and the the rest of the program */
@@ -120,7 +118,7 @@ public class Assignment3 {
 
     private void rightDetected() {
     	   	  	
-    	left.setSpeed(100);
+        left.setSpeed((int)(left.getMaxSpeed()*SPEED));
         left.forward();
         myRobot.sleep(3000);
         left.stop();
@@ -170,7 +168,6 @@ public class Assignment3 {
     public static void main(String[] args) {
 
         Assignment3 main = new Assignment3("dia-lego-D1", Motor.Port.B, Motor.Port.A, Motor.Port.C, Sensor.Port.S2, Sensor.Port.S1);
-        System.out.println("Succes");
         main.init();
 
     }
