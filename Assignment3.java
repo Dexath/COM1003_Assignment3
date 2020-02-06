@@ -52,10 +52,8 @@ public class Assignment3 {
     /** Function initializing parts of the robot and the the rest of the program */
     private void init() {
         
-        mainForward();
-        //doDance();
-
-
+        //mainForward();
+        doDance();
     }
 
     
@@ -88,29 +86,31 @@ public class Assignment3 {
     }
 
     private boolean isRight() {
-        
+        /*
         boolean foundJunction = false;
         if (colorSensor.getColor() == ColorSensor.Color.BLACK) {
             
-             left.setSpeed((int)(left.getMaxSpeed()*(SPEED+0.1)));
-             myRobot.sleep(300);
-             if(colorSensor.getColor() == ColorSensor.Color.BLACK) foundJunction=true;
-             right.backward();
-             left.backward();
-             myRobot.sleep(300);
-             left.setSpeed((int)(left.getMaxSpeed()*SPEED));
-             right.forward();
-             left.forward();
+             * left.setSpeed((int)(left.getMaxSpeed()*(SPEED+0.1))); myRobot.sleep(300);
+             * if(colorSensor.getColor() == ColorSensor.Color.BLACK) foundJunction=true; right.backwards(); left.backwards();
+             * myRobot.sleep(300); left.setSpeed((int)(left).getMaxSpeed()*SPEED));
+             * right.forward(); left.forward();
              
         }
         
         return foundJunction;
+        */
+
+        return (colorSensor.getColor() == ColorSensor.Color.BLACK);
     }
 
     private void rightDetected() {
-        right.stop();
-        myRobot.sleep(1050);
-        right.forward();
+
+        right.setSpeed(0);
+    	left.setSpeed((int) (left.getMaxSpeed() * SPEED));
+        left.forward();
+        myRobot.sleep(3000);
+        left.stop();
+
     }
 
     private boolean isRed() {
@@ -118,67 +118,76 @@ public class Assignment3 {
     }
 
     private void redDetected() {
-    	// Ensuring that the position of ball drop is well within the red circle
-    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	left.forward();
-    	right.forward();
-    	myRobot.sleep(1500);
-    	// Rotation
-    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	left.forward();
-    	right.backward();
-    	myRobot.sleep(1085);
-    	left.stop();
-    	right.stop();
-    	//Dropping of the ball
-    	trap.setSpeed(100);
-    	trap.forward();
-    	myRobot.sleep(1000);
-    	trap.stop();
-    	trap.setSpeed(100);
-    	trap.backward();
-    	myRobot.sleep(1000);
-    	trap.stop();
-    	// Moving back towards the line
-    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	left.forward();
-    	right.forward();
-    	myRobot.sleep(1500);
-    	
+  
     }
 
     private void doDance() {
     	
-    	right.backward();
+    	/*right.backward();
     	left.backward();
     	myRobot.sleep(3000);
     	left.stop();
-    	right.setSpeed(right.getMaxSpeed());
+    	right.setSpeed(right.getMaxSpeed());*/
     	
     	Speaker song = myRobot.getSpeaker();
-    	song.playTone(277, 200);
-    	song.playTone(277, 200);
-    	song.playTone(277, 200);
-    	song.playTone(277, 200);
-    	song.playTone(277, 200);
-    	song.playTone(277, 200);
-    	song.playTone(277, 200);
-    	song.playTone(220, 200);
-    	song.playTone(277, 200);
-    	song.playTone(220, 200);
-    	song.playTone(220, 200);
-    	song.playTone(220, 200);
-    	song.playTone(220, 200);
-    	song.playTone(220, 200);
-    	song.playTone(220, 200);
-    	song.playTone(220, 200);
-      	song.playTone(185, 200);
-    	song.playTone(220, 200);
-    	song.playTone(246, 200);
-
+    	song.playTone(1108, 250);
+    	song.playTone(1108, 250);
+    	song.playTone(1108, 250);
+    	song.playTone(1108, 250);
+    	song.playTone(1108, 250);
+    	song.playTone(1108, 250);
+    	song.playTone(1108, 250);
+    	song.playTone(880, 150);
+    	song.playTone(1108, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+      	song.playTone(740, 150);
+    	song.playTone(880, 250);
+    	song.playTone(987, 250);
+    	song.playTone(987, 250);
+    	song.playTone(987, 250);
+    	song.playTone(987, 250);
+    	song.playTone(987, 250);
+    	song.playTone(987, 250);
+    	song.playTone(987, 250);
+    	song.playTone(830, 150);
+    	song.playTone(987, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 250);
+    	song.playTone(880, 250);
+    	song.playTone(830, 700);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(830, 700);
+    	song.playTone(740, 250);
+    	song.playTone(740, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 250);
+    	song.playTone(880, 250);
+    	song.playTone(830, 700);
+    	
     }
 
     /**
@@ -193,29 +202,25 @@ public class Assignment3 {
 
         // int counter = 0;
         while (true) {
-        	System.out.println("loop");
-            /*if (isWall()) {
+            if (isWall()) {
                 wallDetected();
                 if (ballDropped)
                     break;
             }
-            */
             if (isRight())
                 rightDetected();
-            /*if (isRed())
+            if (isRed())
                 redDetected();
-                
-            
-                myRobot.sleep(250); if(counter==4){ checkLine(); counter=0; } counter++;
-                */
+
+            /*
+             * myRobot.sleep(250); if(counter==4){ checkLine(); counter=0; } counter++;
+             */
         }
     }
 
     public static void main(String[] args) {
 
         Assignment3 main = new Assignment3("dia-lego-D1", Motor.Port.B, Motor.Port.A, Motor.Port.C, Sensor.Port.S2, Sensor.Port.S1);
-
-
         main.init();
 
     }
