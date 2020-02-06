@@ -51,13 +51,9 @@ public class Assignment3 {
 
     /** Function initializing parts of the robot and the the rest of the program */
     private void init() {
-        /*
-        mainForward();
+        
+        //mainForward();
         doDance();
-
-        */
-       redDetected();
-
     }
 
     
@@ -122,48 +118,76 @@ public class Assignment3 {
     }
 
     private void redDetected() {
-    	// Ensuring that the position of ball drop is well within the red circle
-    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	left.forward();
-    	right.forward();
-    	myRobot.sleep(1500);
-    	// Rotation
-    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	left.forward();
-    	right.backward();
-    	myRobot.sleep(1085);
-    	left.stop();
-    	right.stop();
-    	//Dropping of the ball
-    	trap.setSpeed(100);
-    	trap.forward();
-    	myRobot.sleep(1000);
-    	trap.stop();
-    	trap.setSpeed(100);
-    	trap.backward();
-    	myRobot.sleep(1000);
-    	trap.stop();
-    	// Moving back towards the line
-    	left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	right.setSpeed((int) (right.getMaxSpeed() * SPEED));
-    	left.forward();
-    	right.forward();
-    	myRobot.sleep(1500);
-    	
+  
     }
 
     private void doDance() {
     	
-    	right.backward();
+    	/*right.backward();
     	left.backward();
     	myRobot.sleep(3000);
     	left.stop();
-    	right.setSpeed(right.getMaxSpeed());
+    	right.setSpeed(right.getMaxSpeed());*/
     	
     	Speaker song = myRobot.getSpeaker();
-    	//song.playTone();
+    	song.playTone(1108, 250);
+    	song.playTone(1108, 250);
+    	song.playTone(1108, 250);
+    	song.playTone(1108, 250);
+    	song.playTone(1108, 250);
+    	song.playTone(1108, 250);
+    	song.playTone(1108, 250);
+    	song.playTone(880, 150);
+    	song.playTone(1108, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+      	song.playTone(740, 150);
+    	song.playTone(880, 250);
+    	song.playTone(987, 250);
+    	song.playTone(987, 250);
+    	song.playTone(987, 250);
+    	song.playTone(987, 250);
+    	song.playTone(987, 250);
+    	song.playTone(987, 250);
+    	song.playTone(987, 250);
+    	song.playTone(830, 150);
+    	song.playTone(987, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 250);
+    	song.playTone(880, 250);
+    	song.playTone(830, 700);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(830, 700);
+    	song.playTone(740, 250);
+    	song.playTone(740, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 250);
+    	song.playTone(880, 250);
+    	song.playTone(830, 700);
+    	
     }
 
     /**
@@ -197,8 +221,6 @@ public class Assignment3 {
     public static void main(String[] args) {
 
         Assignment3 main = new Assignment3("dia-lego-D1", Motor.Port.B, Motor.Port.A, Motor.Port.C, Sensor.Port.S2, Sensor.Port.S1);
-
-
         main.init();
 
     }

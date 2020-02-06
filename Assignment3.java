@@ -52,8 +52,8 @@ public class Assignment3 {
     /** Function initializing parts of the robot and the the rest of the program */
     private void init() {
         
-        //mainForward();
-        doDance();
+        mainForward();
+        //doDance();
     }
 
     
@@ -194,28 +194,29 @@ public class Assignment3 {
      * Main forward function with detection of different events
      */
     private void mainForward() {
-
-        right.setSpeed((int) (right.getMaxSpeed() * SPEED));
-        left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-        right.forward();
-        left.forward();
-
-        // int counter = 0;
-        while (true) {
-            if (isWall()) {
-                wallDetected();
-                if (ballDropped)
-                    break;
-            }
-            if (isRight())
-                rightDetected();
-            if (isRed())
-                redDetected();
-
-            /*
-             * myRobot.sleep(250); if(counter==4){ checkLine(); counter=0; } counter++;
-             */
+        while(true){
+        	if(colorSensor.getColor()==ColorSensor.Color.RED){
+        		redDetected();
+        	}
+        	if(colorSensor.getColor()==ColorSensor.Color.BLACK){
+        		left.setSpeed(50);
+        		right.setSpeed(0);
+        		right.forward();
+        		left.forward();
+        	}
+        	if(colorSensor.getColor()==ColorSensor.Color.WHITE){
+        		right.setSpeed(50);
+        		left.setSpeed(0);
+        		right.forward();
+        		left.forward();
+        	}
+        	if(isWall()){
+        		if(!ballDropped) wallDetected();
+        		else break;
+        	}
         }
+
+        
     }
 
     public static void main(String[] args) {
