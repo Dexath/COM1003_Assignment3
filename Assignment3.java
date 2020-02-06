@@ -51,12 +51,10 @@ public class Assignment3 {
 
     /** Function initializing parts of the robot and the the rest of the program */
     private void init() {
-        /*
+        
         mainForward();
-        doDance();
+        //doDance();
 
-        */
-       redDetected();
 
     }
 
@@ -90,31 +88,29 @@ public class Assignment3 {
     }
 
     private boolean isRight() {
-        /*
+        
         boolean foundJunction = false;
         if (colorSensor.getColor() == ColorSensor.Color.BLACK) {
             
-             * left.setSpeed((int)(left.getMaxSpeed()*(SPEED+0.1))); myRobot.sleep(300);
-             * if(colorSensor.getColor() == ColorSensor.Color.BLACK) foundJunction=true; right.backwards(); left.backwards();
-             * myRobot.sleep(300); left.setSpeed((int)(left).getMaxSpeed()*SPEED));
-             * right.forward(); left.forward();
+             left.setSpeed((int)(left.getMaxSpeed()*(SPEED+0.1)));
+             myRobot.sleep(300);
+             if(colorSensor.getColor() == ColorSensor.Color.BLACK) foundJunction=true;
+             right.backward();
+             left.backward();
+             myRobot.sleep(300);
+             left.setSpeed((int)(left.getMaxSpeed()*SPEED));
+             right.forward();
+             left.forward();
              
         }
         
         return foundJunction;
-        */
-
-        return (colorSensor.getColor() == ColorSensor.Color.BLACK);
     }
 
     private void rightDetected() {
-
-        right.setSpeed(0);
-    	left.setSpeed((int) (left.getMaxSpeed() * SPEED));
-        left.forward();
-        myRobot.sleep(3000);
-        left.stop();
-
+        right.stop();
+        myRobot.sleep(1050);
+        right.forward();
     }
 
     private boolean isRed() {
@@ -178,19 +174,21 @@ public class Assignment3 {
 
         // int counter = 0;
         while (true) {
-            if (isWall()) {
+        	System.out.println("loop");
+            /*if (isWall()) {
                 wallDetected();
                 if (ballDropped)
                     break;
             }
+            */
             if (isRight())
                 rightDetected();
-            if (isRed())
+            /*if (isRed())
                 redDetected();
-
-            /*
-             * myRobot.sleep(250); if(counter==4){ checkLine(); counter=0; } counter++;
-             */
+                
+            
+                myRobot.sleep(250); if(counter==4){ checkLine(); counter=0; } counter++;
+                */
         }
     }
 
