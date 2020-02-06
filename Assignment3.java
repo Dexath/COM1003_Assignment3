@@ -9,8 +9,7 @@ public class Assignment3 {
     private ColorSensor colorSensor;
     private TouchSensor touchSensor;
     private boolean ballDropped;
-    private final double SPEED; // percentage of maximum speed for normal functions range 0.2 - 0.8
-    private final double CHECK_SPEED; // percentage of macimum speed for checkLine turns range 0.2 - 0.8
+    private final double SPEED; // percentage of maximum speed range 0.2 - 0.8
 
     /** Default constructor for the object Assignment3 */
     public Assignment3() {
@@ -23,7 +22,6 @@ public class Assignment3 {
         this.touchSensor = null;
         this.ballDropped = false;
         this.SPEED = 0.0;
-        this.CHECK_SPEED = 0.0;
 
     }
 
@@ -48,30 +46,21 @@ public class Assignment3 {
         this.touchSensor = myRobot.getTouchSensor(touch);
         this.ballDropped = false;
         this.SPEED = 0.4;
-        this.CHECK_SPEED = 0.2;
+
     }
 
     /** Function initializing parts of the robot and the the rest of the program */
     private void init() {
-    	/*
+        /*
         mainForward();
         doDance();
+
         */
        redDetected();
 
     }
 
-    /**
-     * Interprets color under the sensor
-     * 
-     * @return return 0 for black, 1 for white and 2 for red
-     */
-    private int whatColor() {
-        // TODO write interpreting color
-        System.out.print(colorSensor.getRed());
-        
-        return 1;
-    }
+    
     /**Function that rotates robot around axis pependicular to the surface and going through the left weel
      * until the colorSensor registers black after which it returns the robot to position parallel to the line
      *
@@ -82,7 +71,7 @@ public class Assignment3 {
         right.resetTachoCount();
         right.setSpeed((int) (right.getMaxSpeed() * SPEED));
         left.setSpeed(0);
-        while (whatColor() != 0){}
+        while (colorSensor.getColor() != ColorSensor.Color.BLACK){}
         right.setSpeed(0);
         left.setSpeed((int) (left.getMaxSpeed() * SPEED));
         left.rotate(right.getTachoCount());
@@ -103,10 +92,10 @@ public class Assignment3 {
     private boolean isRight() {
         /*
         boolean foundJunction = false;
-        if (whatColor() == 0) {
+        if (colorSensor.getColor() == ColorSensor.Color.BLACK) {
             
              * left.setSpeed((int)(left.getMaxSpeed()*(SPEED+0.1))); myRobot.sleep(300);
-             * if(whatColor() == 0) foundJunction=true; right.backwards(); left.backwards();
+             * if(colorSensor.getColor() == ColorSensor.Color.BLACK) foundJunction=true; right.backwards(); left.backwards();
              * myRobot.sleep(300); left.setSpeed((int)(left).getMaxSpeed()*SPEED));
              * right.forward(); left.forward();
              
@@ -115,12 +104,13 @@ public class Assignment3 {
         return foundJunction;
         */
 
-        return (whatColor()==0);
+        return (colorSensor.getColor() == ColorSensor.Color.BLACK);
     }
 
     private void rightDetected() {
-    	   	  	
-    	left.setSpeed(100);
+
+        right.setSpeed(0);
+    	left.setSpeed((int) (left.getMaxSpeed() * SPEED));
         left.forward();
         myRobot.sleep(3000);
         left.stop();
@@ -128,7 +118,7 @@ public class Assignment3 {
     }
 
     private boolean isRed() {
-        return (whatColor()==2);
+        return (colorSensor.getColor() == ColorSensor.Color.RED);
     }
 
     private void redDetected() {
@@ -165,7 +155,15 @@ public class Assignment3 {
     }
 
     private void doDance() {
-
+    	
+    	right.backward();
+    	left.backward();
+    	myRobot.sleep(3000);
+    	left.stop();
+    	right.setSpeed(right.getMaxSpeed());
+    	
+    	Speaker song = myRobot.getSpeaker();
+    	//song.playTone();
     }
 
     /**
@@ -199,7 +197,8 @@ public class Assignment3 {
     public static void main(String[] args) {
 
         Assignment3 main = new Assignment3("dia-lego-D1", Motor.Port.B, Motor.Port.A, Motor.Port.C, Sensor.Port.S2, Sensor.Port.S1);
-        System.out.println("Success");
+
+
         main.init();
 
     }
