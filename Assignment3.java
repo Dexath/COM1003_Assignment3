@@ -93,10 +93,6 @@ public class Assignment3 {
     	
     }
 
-    private boolean isRed() {
-        return (colorSensor.getColor() == ColorSensor.Color.RED);
-    }
-
     private void redDetected() {
     	
     }
