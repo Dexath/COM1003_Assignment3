@@ -1,5 +1,12 @@
+//package team_a7;
 import ShefRobot.*;
-
+/**
+ * Code for COM1003 Assignment3
+ * Written on 01.02.20 - 07.02.20
+ * @author Zbigniew Lisak
+ * @author
+ * @author
+ */
 public class Assignment3 {
 
     private Robot myRobot;
@@ -9,7 +16,7 @@ public class Assignment3 {
     private ColorSensor colorSensor;
     private TouchSensor touchSensor;
     private boolean ballDropped;
-    private final double SPEED; // percentage of maximum speed range 0.2 - 0.8
+    private final int SPEED; //General speed of the robot
 
     /** Default constructor for the object Assignment3 */
     public Assignment3() {
@@ -21,12 +28,12 @@ public class Assignment3 {
         this.colorSensor = null;
         this.touchSensor = null;
         this.ballDropped = false;
-        this.SPEED = 0.0;
+        this.SPEED = 0;
 
     }
 
     /**
-     * Constructor with specified: if of the robot and ports for motors and sensors
+     * Constructor with specified id of the robot and ports for motors and sensors
      * 
      * @param robotId Id of the robot
      * @param right   Port of the right large motor
@@ -45,91 +52,112 @@ public class Assignment3 {
         this.colorSensor = myRobot.getColorSensor(color);
         this.touchSensor = myRobot.getTouchSensor(touch);
         this.ballDropped = false;
-        this.SPEED = 0.4;
+        this.SPEED = 100;
 
     }
 
     /** Function initializing parts of the robot and the the rest of the program */
+
     private void init() {
-        
-        //mainForward();
+       
+        mainForward();
         doDance();
-    }
-
-    
-    /**Function that rotates robot around axis pependicular to the surface and going through the left weel
-     * until the colorSensor registers black after which it returns the robot to position parallel to the line
-     *
-     * Use when using line check
-     */
-
-    private void checkLine() {
-        right.resetTachoCount();
-        right.setSpeed((int) (right.getMaxSpeed() * SPEED));
-        left.setSpeed(0);
-        while (colorSensor.getColor() != ColorSensor.Color.BLACK){}
-        right.setSpeed(0);
-        left.setSpeed((int) (left.getMaxSpeed() * SPEED));
-        left.rotate(right.getTachoCount());
-
-        right.setSpeed((int) (right.getMaxSpeed() * SPEED));
-        left.setSpeed((int) (left.getMaxSpeed() * SPEED));
 
     }
 
-    private boolean isWall() {
-        return touchSensor.isTouched();
-    }
-
+	/**
+	 * The rutine used for turning around when robot hits a wall
+	 */
     private void wallDetected() {
+		
+		//Move back a little
+    	left.setSpeed(SPEED);
+    	right.setSpeed(SPEED);
+    	left.backward();
+    	right.backward();
+    	myRobot.sleep(500);
+    	left.stop();
+		right.stop();
+		
+    	// Rotation
+    	left.setSpeed(SPEED);
+    	right.setSpeed(SPEED);
+    	left.forward();
+		right.backward();
 
+		//empty while loops used for waiting will something happens
+		myRobot.sleep(300);
+    	while(colorSensor.getColor()==ColorSensor.Color.WHITE){}
+    	while(colorSensor.getColor()==ColorSensor.Color.BLACK){}
+    	left.stop();
+		right.stop();
+		
+    	// Moving back to the opposite direction
+    	left.setSpeed(SPEED);
+    	right.setSpeed(SPEED);
+    	left.forward();
+    	right.forward();
+
+    	
     }
 
-    private boolean isRight() {
-        /*
-        boolean foundJunction = false;
-        if (colorSensor.getColor() == ColorSensor.Color.BLACK) {
-            
-             * left.setSpeed((int)(left.getMaxSpeed()*(SPEED+0.1))); myRobot.sleep(300);
-             * if(colorSensor.getColor() == ColorSensor.Color.BLACK) foundJunction=true; right.backwards(); left.backwards();
-             * myRobot.sleep(300); left.setSpeed((int)(left).getMaxSpeed()*SPEED));
-             * right.forward(); left.forward();
-             
-        }
-        
-        return foundJunction;
-        */
-
-        return (colorSensor.getColor() == ColorSensor.Color.BLACK);
-    }
-
-    private void rightDetected() {
-
-        right.setSpeed(0);
-    	left.setSpeed((int) (left.getMaxSpeed() * SPEED));
-        left.forward();
-        myRobot.sleep(3000);
-        left.stop();
-
-    }
-
-    private boolean isRed() {
-        return (colorSensor.getColor() == ColorSensor.Color.RED);
-    }
 
     private void redDetected() {
-  
+
+    	
+    	// Rotation
+    	left.setSpeed(SPEED);
+    	right.setSpeed(SPEED);
+    	right.forward();
+		left.backward();
+		
+		//empty while loops used for waiting will something happens
+    	myRobot.sleep(300);
+    	while(colorSensor.getColor()==ColorSensor.Color.RED){}
+    	while(colorSensor.getColor()==ColorSensor.Color.WHITE){}
+    	left.stop();
+		right.stop();
+		
+    	//Moving a little bit back 
+    	left.setSpeed(SPEED);
+    	right.setSpeed(SPEED);
+    	left.backward();
+    	right.backward();
+    	myRobot.sleep(500);
+    	left.stop();
+		right.stop();
+		
+    	//Dropping of the ball
+    	trap.setSpeed(SPEED);
+    	trap.forward();
+    	myRobot.sleep(1000);
+    	trap.stop();
+    	trap.setSpeed(SPEED);
+    	trap.backward();
+    	myRobot.sleep(1000);
+    	trap.stop();
+		ballDropped = true;
+		
+    	// Moving back towards the line
+    	left.setSpeed(SPEED);
+    	right.setSpeed(SPEED);
+    	left.forward();
+    	right.forward();
+    	myRobot.sleep(500);
     }
 
     private void doDance() {
     	
-    	/*right.backward();
+    	right.backward();
     	left.backward();
-    	myRobot.sleep(3000);
+    	myRobot.sleep(2000);
     	left.stop();
-    	right.setSpeed(right.getMaxSpeed());*/
+    	right.setSpeed(right.getMaxSpeed());
     	
     	Speaker song = myRobot.getSpeaker();
+    	song.setVolume(80);
+		
+		//a fragment of song "Dance Monkey"
     	song.playTone(1108, 250);
     	song.playTone(1108, 250);
     	song.playTone(1108, 250);
@@ -159,7 +187,7 @@ public class Assignment3 {
     	song.playTone(987, 250);
     	song.playTone(830, 250);
     	song.playTone(830, 250);
-    	song.playTone(830, 250);
+    	song.playTone(830, 250); 
     	song.playTone(830, 250);
     	song.playTone(830, 250);
     	song.playTone(830, 250);
@@ -187,40 +215,140 @@ public class Assignment3 {
     	song.playTone(740, 250);
     	song.playTone(880, 250);
     	song.playTone(830, 700);
-    	
+    	song.playTone(1108, 750);
+    	song.playTone(987, 450);
+    	song.playTone(880, 250);
+    	song.playTone(987, 250);
+    	song.playTone(880, 250);
+    	song.playTone(987, 250); 
+    	song.playTone(880, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(660, 250);
+    	song.playTone(740, 750);
+    	song.playTone(740, 250);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 750);
+    	song.playTone(880, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(740, 250);
+    	song.playTone(740, 250);
+    	song.playTone(880, 750);
+    	song.playTone(987, 450);
+    	song.playTone(830, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(740, 150);
+    	song.playTone(740, 150);
+    	song.playTone(880, 750);
+    	song.playTone(830, 750);
+    	song.playTone(740, 250);  	
+    	song.playTone(740, 450);
+    	song.playTone(740, 250);
+    	song.playTone(880, 250);
+    	song.playTone(830, 250);
+    	song.playTone(880, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 150);
+    	song.playTone(830, 150);
+    	song.playTone(880, 250);
+    	song.playTone(830, 150);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(740, 750);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 550);
+    	song.playTone(830, 150);
+    	song.playTone(740, 150);
+    	song.playTone(830, 150);
+    	song.playTone(740, 150);
+    	song.playTone(830, 150);
+    	song.playTone(740, 150);
+    	song.playTone(830, 450);
+    	song.playTone(740, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 250);
+    	song.playTone(740, 150);
+    	song.playTone(880, 750);
+    	song.playTone(740, 450);
+    	song.playTone(740, 450);
+    	song.playTone(880, 250);
+    	song.playTone(830, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(830, 150);
+    	song.playTone(880, 250);
+    	song.playTone(830, 150);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(880, 250);
+    	song.playTone(740, 750);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(880, 150);
+    	song.playTone(830, 550);
+    	song.playTone(740, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(830, 250);
+    	song.playTone(740, 250);
+    	song.playTone(880, 450);
+    	song.playTone(830, 250);
+     	song.playTone(740, 250);
+     	song.playTone(880, 750);
+     	song.playTone(880, 450);
+     	song.playTone(830, 450);
+     	song.playTone(740, 450);
     }
 
     /**
-     * Main forward function with detection of different events
+     * Main forward function with detection of different events and logic for following the line
      */
+
     private void mainForward() {
+        while(true){
 
-        right.setSpeed((int) (right.getMaxSpeed() * SPEED));
-        left.setSpeed((int) (right.getMaxSpeed() * SPEED));
-        right.forward();
-        left.forward();
-
-        // int counter = 0;
-        while (true) {
-            if (isWall()) {
-                wallDetected();
-                if (ballDropped)
-                    break;
-            }
-            if (isRight())
-                rightDetected();
-            if (isRed())
-                redDetected();
-
-            /*
-             * myRobot.sleep(250); if(counter==4){ checkLine(); counter=0; } counter++;
-             */
+        	if(colorSensor.getColor()==ColorSensor.Color.RED){
+        		redDetected();
+			}
+			
+        	if(colorSensor.getColor()==ColorSensor.Color.BLACK){
+        		left.setSpeed(SPEED);
+        		right.setSpeed(SPEED/4);
+        		right.backward();
+        		left.forward();
+			}
+			
+        	if(colorSensor.getColor()==ColorSensor.Color.WHITE){
+        		right.setSpeed(SPEED);
+        		left.setSpeed(SPEED/4);
+        		right.forward();
+        		left.backward();
+			}
+			
+        	if(touchSensor.isTouched()){
+        		if(!ballDropped) wallDetected();
+        		else break; //ball dropped + hit the wall = everything was done we can celebrate
+        	}
         }
+
+        
     }
 
     public static void main(String[] args) {
 
-        Assignment3 main = new Assignment3("dia-lego-D1", Motor.Port.B, Motor.Port.A, Motor.Port.C, Sensor.Port.S2, Sensor.Port.S1);
+        Assignment3 main = new Assignment3("dia-lego-D5", Motor.Port.B, Motor.Port.A, Motor.Port.C, Sensor.Port.S2, Sensor.Port.S1);
         main.init();
 
     }
